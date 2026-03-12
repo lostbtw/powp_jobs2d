@@ -30,13 +30,13 @@ public class DrawerAdapter implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 
 		controller.drawLine(line);
-		
+
 		this.startX = x;
 		this.startY = y;
 	}
 
 	@Override
 	public String toString() {
-		return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+		return "Drawer Adapter";
 	}
 }
