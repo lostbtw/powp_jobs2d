@@ -30,6 +30,9 @@ public class DrawerAdapter implements Job2dDriver {
 		line.setEndCoordinates(x, y);
 
 		controller.drawLine(line);
+		
+		this.startX = x;
+		this.startY = y;
 	}
 
 	@Override
