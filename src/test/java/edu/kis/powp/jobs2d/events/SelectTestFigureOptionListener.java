@@ -9,6 +9,9 @@ import edu.kis.powp.jobs2d.magicpresets.FiguresJoe;
 
 public class SelectTestFigureOptionListener implements ActionListener {
 
+    public static final String FIGURE_JOE_1 = "Figure Joe 1";
+    public static final String FIGURE_JOE_2 = "Figure Joe 2"; 
+
 	private DriverManager driverManager;
 
 	public SelectTestFigureOptionListener(DriverManager driverManager) {
@@ -19,15 +22,10 @@ public class SelectTestFigureOptionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
         Job2dDriver driver = driverManager.getCurrentDriver();
 		String testName = e.getActionCommand();
-        switch (testName) {
-            case "Figure Joe 1":
+    	if (FIGURE_JOE_1.equals(testName)){
                 FiguresJoe.figureScript1(driver);
-                break;
-            case "Figure Joe 2":
-                FiguresJoe.figureScript2(driver);
-                break;
-			default:
-				break;
-        }
+		} else if (FIGURE_JOE_2.equals(testName)){
+			    FiguresJoe.figureScript2(driver);
+		}
 	}
 }
