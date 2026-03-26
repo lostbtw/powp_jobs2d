@@ -10,6 +10,7 @@ import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerDriverAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
+import edu.kis.powp.jobs2d.events.SelectCommandFigureOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
@@ -28,6 +29,12 @@ public class TestJobs2dPatterns {
 
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JOE_1, selectTestFigureOptionListener);
 		application.addTest(SelectTestFigureOptionListener.FIGURE_JOE_2, selectTestFigureOptionListener);
+
+		SelectCommandFigureOptionListener commandFigureListener =
+        	new SelectCommandFigureOptionListener(DriverFeature.getDriverManager());
+
+        application.addTest(SelectCommandFigureOptionListener.FIGURE_RECTANGLE, commandFigureListener);
+        application.addTest(SelectCommandFigureOptionListener.FIGURE_CIRCLE, commandFigureListener);
 	}
 
 	/**
@@ -41,7 +48,7 @@ public class TestJobs2dPatterns {
 		DriverFeature.getDriverManager().setCurrentDriver(loggerDriver);
 
 		Job2dDriver testDriver = new DrawerDriverAdapter(DrawerFeature.getDrawerController());
-		DriverFeature.addDriver("Buggy Simulator", testDriver);
+		DriverFeature.addDriver("Test Driver", testDriver);
 
 		DriverFeature.updateDriverInfo();
 	}
@@ -55,7 +62,7 @@ public class TestJobs2dPatterns {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
 		application.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility",
 				new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-		defaultDrawerWindow.setVisible(true);
+		defaultDrawerWindow.setVisible(false);
 	}
 
 	/**
